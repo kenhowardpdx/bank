@@ -1,4 +1,9 @@
 {
+  "compilerOptions": {
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
   "exclude": [
     "packages/**/tests/**",
     "packages/**/dist/**"
