@@ -5,7 +5,7 @@
     "skipLibCheck": true
   },
   "exclude": [
-    "packages/**/tests/**",
+    "packages/**/__tests__/**",
     "packages/**/dist/**"
   ],
   "references": [

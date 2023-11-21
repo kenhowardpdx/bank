@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
 }
