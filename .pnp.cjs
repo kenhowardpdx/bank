@@ -32,6 +32,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@types/eslint", "npm:8.44.8"],\
+          ["@types/jest", "npm:29.5.11"],\
           ["@typescript-eslint/eslint-plugin", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:6.13.2"],\
           ["@typescript-eslint/parser", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:6.13.2"],\
           ["eslint", "npm:8.55.0"],\
@@ -1627,10 +1628,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/jest", [\
-      ["npm:29.5.9", {\
-        "packageLocation": "./.yarn/cache/@types-jest-npm-29.5.9-9b1643ff54-66fe6b9b1c.zip/node_modules/@types/jest/",\
+      ["npm:29.5.11", {\
+        "packageLocation": "./.yarn/cache/@types-jest-npm-29.5.11-1ede28257d-524a339484.zip/node_modules/@types/jest/",\
         "packageDependencies": [\
-          ["@types/jest", "npm:29.5.9"],\
+          ["@types/jest", "npm:29.5.11"],\
           ["expect", "npm:29.7.0"],\
           ["pretty-format", "npm:29.7.0"]\
         ],\
@@ -2376,6 +2377,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["bank", "workspace:."],\
           ["@types/eslint", "npm:8.44.8"],\
+          ["@types/jest", "npm:29.5.11"],\
           ["@typescript-eslint/eslint-plugin", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:6.13.2"],\
           ["@typescript-eslint/parser", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:6.13.2"],\
           ["eslint", "npm:8.55.0"],\
@@ -6080,7 +6082,7 @@ const RAW_RUNTIME_STATE =
           ["server", "workspace:packages/server"],\
           ["@jest/types", "npm:29.6.3"],\
           ["@types/express", "npm:4.17.21"],\
-          ["@types/jest", "npm:29.5.9"],\
+          ["@types/jest", "npm:29.5.11"],\
           ["@types/node", "npm:20.10.4"],\
           ["@types/supertest", "npm:2.0.16"],\
           ["express", "npm:4.18.2"],\
@@ -6565,7 +6567,7 @@ const RAW_RUNTIME_STATE =
           ["@types/babel-jest", null],\
           ["@types/babel__core", null],\
           ["@types/esbuild", null],\
-          ["@types/jest", "npm:29.5.9"],\
+          ["@types/jest", "npm:29.5.11"],\
           ["@types/jest__types", null],\
           ["@types/typescript", null],\
           ["babel-jest", null],\
