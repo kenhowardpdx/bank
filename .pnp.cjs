@@ -35,6 +35,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:6.13.2"],\
           ["@typescript-eslint/parser", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:6.13.2"],\
           ["eslint", "npm:8.55.0"],\
+          ["eslint-config-prettier", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:9.1.0"],\
           ["ts-node", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:10.9.1"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"]\
         ],\
@@ -2353,6 +2354,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:6.13.2"],\
           ["@typescript-eslint/parser", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:6.13.2"],\
           ["eslint", "npm:8.55.0"],\
+          ["eslint-config-prettier", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:9.1.0"],\
           ["ts-node", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:10.9.1"],\
           ["typescript", "patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"]\
         ],\
@@ -3141,6 +3143,28 @@ const RAW_RUNTIME_STATE =
           ["optionator", "npm:0.9.3"],\
           ["strip-ansi", "npm:6.0.1"],\
           ["text-table", "npm:0.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["eslint-config-prettier", [\
+      ["npm:9.1.0", {\
+        "packageLocation": "./.yarn/cache/eslint-config-prettier-npm-9.1.0-0e1fd42d7d-6d332694b3.zip/node_modules/eslint-config-prettier/",\
+        "packageDependencies": [\
+          ["eslint-config-prettier", "npm:9.1.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:9.1.0", {\
+        "packageLocation": "./.yarn/__virtual__/eslint-config-prettier-virtual-01c5cae429/0/cache/eslint-config-prettier-npm-9.1.0-0e1fd42d7d-6d332694b3.zip/node_modules/eslint-config-prettier/",\
+        "packageDependencies": [\
+          ["eslint-config-prettier", "virtual:47fe8b6886d115eaf599ab8a6e96841d7d40dc40d36186a323021d9825c2c74fde81636a90553c8bf7e9ad9899ee537e8c81b6ee845fa8a4e499506918ef724c#npm:9.1.0"],\
+          ["@types/eslint", "npm:8.44.8"],\
+          ["eslint", "npm:8.55.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/eslint",\
+          "eslint"\
         ],\
         "linkType": "HARD"\
       }]\
