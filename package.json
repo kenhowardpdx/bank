@@ -3,6 +3,7 @@
   "packageManager": "yarn@4.0.2",
   "scripts": {
     "test": "yarn workspaces foreach --since run test",
+    "test:all": "yarn workspaces foreach --recursive --from 'packages/*' run test",
     "lint": "eslint . --fix"
   },
   "workspaces": [
