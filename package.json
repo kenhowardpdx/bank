@@ -1,6 +1,10 @@
 {
   "name": "bank",
   "packageManager": "yarn@4.0.2",
+  "scripts": {
+    "test": "yarn workspaces foreach --since run test",
+    "lint": "eslint ."
+  },
   "workspaces": [
     "packages/*"
   ],
