@@ -4,12 +4,13 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:prettier/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: ["./tsconfig.eslint.json", "./packages/*/tsconfig.json"],
   },
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "prettier"],
   root: true,
   ignorePatterns: ["dist", ".eslintrc.js"],
   rules: {
