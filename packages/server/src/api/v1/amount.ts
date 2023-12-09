@@ -1,4 +1,4 @@
-type Money = `${"$" | ""}${number}.${number}`;
+type USD = `$$${number}.${number}`;
 
 class Amount {
   static format = (amount: number) => {
@@ -7,7 +7,7 @@ class Amount {
       currency: "USD",
     });
 
-    return formatter.format(amount) as Money;
+    return formatter.format(amount) as USD;
   };
   private _amount: number;
   constructor(amount: string) {
