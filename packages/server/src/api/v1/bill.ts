@@ -23,11 +23,14 @@ class Bill {
 
     this.amount = new Amount(amount);
   }
-  public inCycle = (start: Date, end: Date): boolean => {
-    // do stuff
+  public inRange = (start: Date, end: Date): boolean => {
     const dueDate = this.dueDate(start, end);
 
     if (this.endDate && this.endDate < start) {
+      return false;
+    }
+
+    if (this.startDate > end) {
       return false;
     }
 
