@@ -1,8 +1,11 @@
 import express from "express";
+import bodyParser from "body-parser";
 import { router as api } from "./api/v1/router";
 
 const app = express();
 const router = express.Router();
+
+app.use(bodyParser.json());
 
 router.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET");

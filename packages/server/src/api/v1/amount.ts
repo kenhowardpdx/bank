@@ -1,4 +1,4 @@
-type USD = `$$${number}.${number}`;
+type USD = `${"-" | ""}$$${number}.${number}`;
 
 class Amount {
   static format = (amount: number) => {
@@ -9,16 +9,19 @@ class Amount {
 
     return formatter.format(amount) as USD;
   };
-  private _amount: number;
-  constructor(amount: string) {
-    const amt = parseFloat(amount.replace("$", ""));
-    this._amount = amt;
+  #amount: number;
+  constructor(amount: string, negative = false) {
+    if (amount[0] === "-") {
+      negative = true;
+    }
+    const amt = parseFloat(amount.replace(/^(-|\$){0,2}/, ""));
+    this.#amount = negative ? amt * -1 : amt;
   }
   public get amount() {
-    return this._amount;
+    return this.#amount;
   }
   public toString() {
-    return Amount.format(this._amount);
+    return Amount.format(this.#amount);
   }
 }
 

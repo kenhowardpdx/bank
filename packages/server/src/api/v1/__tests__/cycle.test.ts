@@ -152,10 +152,11 @@ describe("Cycle", () => {
           }),
         ],
         range: <DateRange>[new Date("10/21/1985"), new Date("10/28/1985")],
+        expected: -76.25,
       },
     ])(
       "has different bills per cycle",
-      ({ bills, range: [start, end] }: TestData) => {
+      ({ bills, range: [start, end], expected }: TestData) => {
         const cOne = new Cycle(bills, start, end);
         const cTwo = new Cycle(
           bills,
@@ -163,6 +164,8 @@ describe("Cycle", () => {
           new Date(end.getFullYear(), end.getMonth() + 1, end.getDate()),
         );
         expect(cOne.bills.length).not.toEqual(cTwo.bills.length);
+        expect(cOne.bills.length).not.toEqual(cTwo.bills.length);
+        expect(cOne.getSum() + cTwo.getSum()).toBe(expected);
       },
     );
   });

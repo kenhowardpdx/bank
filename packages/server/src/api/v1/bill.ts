@@ -12,7 +12,7 @@ const getLastDayOfMonth = (date: Date): Date => {
 };
 
 class Bill {
-  amount: Amount;
+  #amount: Amount;
   name: string;
   startDate: Date;
   endDate?: Date;
@@ -21,9 +21,9 @@ class Bill {
     this.endDate = endDate ? new Date(endDate) : undefined;
     this.name = name;
 
-    this.amount = new Amount(amount);
+    this.#amount = new Amount(amount, true);
   }
-  public inRange = (start: Date, end: Date): boolean => {
+  inRange = (start: Date, end: Date): boolean => {
     const dueDate = this.dueDate(start, end);
 
     if (this.endDate && this.endDate < start) {
@@ -40,8 +40,7 @@ class Bill {
 
     return false;
   };
-
-  public dueDate = (start: Date, end: Date): Date => {
+  dueDate = (start: Date, end: Date): Date => {
     // account for shorter months by restricting due date to month length
     const lastDayOfStartMonth = getLastDayOfMonth(start).getDate();
     // account for going into the next year
@@ -63,6 +62,9 @@ class Bill {
     // default to today
     return new Date();
   };
+  getAmount = (): Amount => {
+    return this.#amount;
+  };
 }
 
-export { Bill };
+export { Bill, BillInput };
