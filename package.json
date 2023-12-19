@@ -1,13 +1,14 @@
 {
-  "name": "bank",
+  "name": "@bank/bank",
   "packageManager": "yarn@4.0.2",
   "scripts": {
     "build": "yarn workspaces foreach --since run build",
     "test": "yarn workspaces foreach --since run test",
-    "test:all": "yarn workspaces foreach --recursive --from 'packages/*' run test",
+    "test:all": "yarn workspaces foreach --recursive --from 'packages/*' --from 'apps/*' run test",
     "lint": "eslint . --fix"
   },
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "devDependencies": {

@@ -4,15 +4,20 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "exclude": [
+    "apps/**/__tests__/**",
+    "apps/**/dist/**",
     "packages/**/__tests__/**",
     "packages/**/dist/**"
   ],
   "references": [
     {
-      "path": "./packages/server"
+      "path": "./apps/server"
+    },
+    {
+      "path": "./packages/forecast"
     }
   ]
 }

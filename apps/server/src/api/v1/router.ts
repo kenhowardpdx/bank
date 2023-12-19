@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getForecast } from "./forecast";
+import { getForecast } from "@bank/forecast";
 
 type JSONObject = {
   [key: string]: string | number | JSONObject | Array<JSONObject> | null;

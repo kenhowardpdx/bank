@@ -7,9 +7,12 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "exclude": [
+    "apps/**/jest.config.ts",
+    "apps/**/dist",
+    "apps/**/__tests__/**",
     "packages/**/jest.config.ts",
     "packages/**/dist",
     "packages/**/__tests__/**"
