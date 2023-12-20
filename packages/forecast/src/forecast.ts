@@ -5,6 +5,13 @@ import { sum } from "./sum";
 
 type CycleType = "weekly" | "bi-weekly" | "monthly" | "10|25";
 
+interface CalculatedCycle {
+  startDate: Date;
+  endDate: Date;
+  sum: string;
+  total: string;
+}
+
 const getForecast = (
   incomePerCycle: number,
   startingBalance: number,
@@ -16,7 +23,7 @@ const getForecast = (
 ) => {
   const bills = rawBills.map((b: BillInput) => new Bill(b));
   let total = startingBalance;
-  let cycles: Array<Cycle> = [];
+  let cycles: Array<CalculatedCycle> = [];
   let next = startDate;
   let end = new Date(startDate);
   while (end < endDate) {
@@ -48,7 +55,13 @@ const getForecast = (
     const income = incomePerCycle;
     const cycle = new Cycle(bills, start, end);
     total = sum(sum(total, income), cycle.getSum());
-    cycles = [...cycles, cycle];
+    const calculated = {
+      startDate: cycle.startDate,
+      endDate: cycle.endDate,
+      sum: cycle.sum,
+      total: new Amount(total.toString()).toString(),
+    };
+    cycles = [...cycles, calculated];
   }
   return {
     cycles,
