@@ -885,6 +885,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./apps/client/",\
         "packageDependencies": [\
           ["@bank/client", "workspace:apps/client"],\
+          ["@bank/forecast", "workspace:packages/forecast"],\
           ["@popperjs/core", "npm:2.11.8"],\
           ["@types/bootstrap", "npm:5.2.10"],\
           ["@types/react", "npm:18.2.45"],\
@@ -894,6 +895,7 @@ const RAW_RUNTIME_STATE =
           ["copy-webpack-plugin", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:11.0.0"],\
           ["css-loader", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:6.8.1"],\
           ["html-webpack-plugin", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:5.6.0"],\
+          ["postcss", "npm:8.4.32"],\
           ["postcss-loader", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:7.3.3"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:18.2.0"],\
@@ -2995,7 +2997,7 @@ const RAW_RUNTIME_STATE =
           ["fraction.js", "npm:4.3.7"],\
           ["normalize-range", "npm:0.1.2"],\
           ["picocolors", "npm:1.0.0"],\
-          ["postcss", null],\
+          ["postcss", "npm:8.4.32"],\
           ["postcss-value-parser", "npm:4.2.0"]\
         ],\
         "packagePeers": [\
@@ -8024,7 +8026,7 @@ const RAW_RUNTIME_STATE =
           ["@types/webpack", null],\
           ["cosmiconfig", "virtual:9463269c43e9d789cb75067abf840e42f1b02eb3a34555a91ec65c04569eb3370e1b955b9ca9de0e559b9062675ddfef20e1a0b8d874164ff77a4c1d6d313271#npm:8.3.6"],\
           ["jiti", "npm:1.21.0"],\
-          ["postcss", null],\
+          ["postcss", "npm:8.4.32"],\
           ["semver", "npm:7.5.4"],\
           ["webpack", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:5.89.0"]\
         ],\
