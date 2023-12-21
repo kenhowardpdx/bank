@@ -1,2 +1,11 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
+
+tr.negative td {
+    background-color: deeppink;
+    color: white;
+}
+
+.clickable {
+    cursor: pointer;
+}

@@ -10,6 +10,8 @@ interface CalculatedCycle {
   endDate: Date;
   sum: string;
   total: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  bills: Array<any>;
 }
 
 const getForecast = (
@@ -60,6 +62,7 @@ const getForecast = (
       endDate: cycle.endDate,
       sum: cycle.sum,
       total: new Amount(total.toString()).toString(),
+      bills: cycle.bills,
     };
     cycles = [...cycles, calculated];
   }
