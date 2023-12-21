@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { formatDate } from "../helpers/date";
+import { Button } from "react-bootstrap";
 
 export interface Bill {
   name: string;
@@ -42,8 +43,8 @@ export default function BillRow({
       </tr>
       <tr>
         <td colSpan={4}>
-          <form>
-            <div className="row">
+          <form className="container p-0">
+            <div className="row gy-4">
               <div className="col">
                 <label className="form-label">Names</label>
                 <input
@@ -89,7 +90,13 @@ export default function BillRow({
                 />
               </div>
             </div>
-            <button onClick={deleteBill}>delete</button>
+            <div className="row">
+              <div className="col gy-4 text-end">
+                <Button variant="danger" onClick={deleteBill}>
+                  <i className="bi bi-trash-fill"></i>
+                </Button>
+              </div>
+            </div>
           </form>
         </td>
       </tr>

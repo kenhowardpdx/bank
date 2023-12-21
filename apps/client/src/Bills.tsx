@@ -1,6 +1,7 @@
-import { ReactElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { Bill } from "./components/BillRow";
 import BillRow from "./components/BillRow";
+import { Button } from "react-bootstrap";
 
 export default function Bills() {
   const billsFromStorage = JSON.parse(
@@ -25,7 +26,7 @@ export default function Bills() {
     });
   };
 
-  let rows: Array<ReactElement<Bill>> = getBills();
+  let rows = getBills();
 
   useEffect(() => {
     rows = getBills();
@@ -44,7 +45,9 @@ export default function Bills() {
 
   return (
     <div>
-      <button onClick={addBill}>+</button>
+      <Button variant="primary" onClick={addBill}>
+        <i className="bi bi-file-earmark-plus-fill"></i>
+      </Button>
       <table>
         <thead>
           <tr>
