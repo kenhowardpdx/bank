@@ -8,9 +8,13 @@ export default function Bills() {
   ) as Array<Bill>;
   const [bills, setBills] = useState(billsFromStorage);
 
-  const updateBills = (index: number, bill: Bill) => {
+  const updateBills = (index: number, bill: Bill | null) => {
     const newBills = [...bills];
-    newBills.splice(index, 1, bill);
+    if (bill !== null) {
+      newBills.splice(index, 1, bill);
+    } else {
+      newBills.splice(index, 1);
+    }
     localStorage.setItem("bills", JSON.stringify(newBills));
     setBills(newBills);
   };

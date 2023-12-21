@@ -36,6 +36,13 @@ describe("Bill", () => {
         range: <DateRange>[new Date("1/21/2001"), new Date("1/28/2001")],
         expected: new Date("1/22/2001"),
       },
+      {
+        name: "bill four",
+        startDate: "1985-10-22",
+        amount: "15.25",
+        range: <DateRange>[new Date("1/21/2001"), new Date("1/28/2001")],
+        expected: new Date("1/22/2001"),
+      },
     ])(
       "bill ($name) is due on $expected",
       ({

@@ -56,6 +56,28 @@ describe("forecast", () => {
         sum: "$385.10",
       },
     },
+    {
+      incomePerCycle: 159.99,
+      startingBalance: 24.98,
+      startDate: new Date("10/21/1985"),
+      endDate: new Date("11/28/1985"),
+      bills: [
+        {
+          name: "foo",
+          amount: "100",
+          startDate: "10/11/1985",
+        },
+        {
+          name: "bar",
+          amount: "$2719.85",
+          startDate: "1/18/1985",
+        },
+      ],
+      expected: {
+        cycles: 3,
+        sum: "-$2,314.90",
+      },
+    },
   ])(
     "sum calculates",
     ({

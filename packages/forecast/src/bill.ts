@@ -11,14 +11,24 @@ const getLastDayOfMonth = (date: Date): Date => {
   return new Date(date.getFullYear(), date.getMonth(), 0);
 };
 
+const normalizeDate = (d: string) => {
+  const rawDate = new Date(d);
+  const newDate = new Date(
+    rawDate.getUTCFullYear(),
+    rawDate.getUTCMonth(),
+    rawDate.getUTCDate(),
+  );
+  return newDate;
+};
+
 class Bill {
   #amount: Amount;
   name: string;
   startDate: Date;
   endDate?: Date;
   constructor({ startDate, endDate, amount, name }: BillInput) {
-    this.startDate = new Date(startDate);
-    this.endDate = endDate ? new Date(endDate) : undefined;
+    this.startDate = normalizeDate(startDate);
+    this.endDate = endDate ? normalizeDate(endDate) : undefined;
     this.name = name;
 
     this.#amount = new Amount(amount, true);

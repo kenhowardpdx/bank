@@ -17,7 +17,7 @@ export default function BillRow({
   amount: a,
 }: Bill & {
   index: number;
-  updateBills: (index: number, bill: Bill) => void;
+  updateBills: (index: number, bill: Bill | null) => void;
 }) {
   const [name, setName] = useState(n);
   const [startDate, setStartDate] = useState(sd);
@@ -29,6 +29,9 @@ export default function BillRow({
   useEffect(() => {
     setBills();
   }, [name, startDate, endDate, amount]);
+  const deleteBill = () => {
+    updateBills(index, null);
+  };
   return (
     <>
       <tr>
@@ -86,6 +89,7 @@ export default function BillRow({
                 />
               </div>
             </div>
+            <button onClick={deleteBill}>delete</button>
           </form>
         </td>
       </tr>

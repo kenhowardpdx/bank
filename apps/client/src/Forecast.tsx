@@ -26,15 +26,18 @@ export default function Forecast() {
 
   const Bill = function ({
     isShown,
+    dueDate,
     name,
     amount,
   }: {
     isShown: boolean;
+    dueDate: string;
     name: string;
     amount: string;
   }) {
     return (
       <tr className={"collapse" + (isShown ? "show" : "")}>
+        <td>{dueDate}</td>
         <td>{name}</td>
         <td>{amount}</td>
       </tr>
@@ -50,13 +53,19 @@ export default function Forecast() {
     total: string;
     startDate: Date;
     endDate: Date;
-    bills: Array<Bill>;
+    bills: Array<Bill & { dueDate: Date }>;
   }) {
     const isNegative = total[0] === "-";
     const [isShown, setIsShown] = useState(false);
     const rows = bills.map((bill, i) => {
       return (
-        <Bill key={i} isShown={isShown} name={bill.name} amount={bill.amount} />
+        <Bill
+          key={i}
+          isShown={isShown}
+          dueDate={bill.dueDate.toLocaleDateString() || "none"}
+          name={bill.name}
+          amount={bill.amount}
+        />
       );
     });
     return (
@@ -65,7 +74,7 @@ export default function Forecast() {
           className={"clickable" + (isNegative ? "negative" : "")}
           onClick={() => setIsShown(!isShown)}
         >
-          <td>
+          <td colSpan={2}>
             {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
           </td>
           <td>{total}</td>
@@ -133,7 +142,7 @@ export default function Forecast() {
       <table className="table">
         <thead>
           <tr>
-            <th>Pay period</th>
+            <th colSpan={2}>Pay period</th>
             <th>Total</th>
           </tr>
         </thead>
