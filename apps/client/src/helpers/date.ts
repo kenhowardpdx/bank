@@ -7,3 +7,12 @@ export const formatDate = (d: Date) => {
 export const getFutureDate = (d: Date, addDays: number) => {
   return new Date(d.getFullYear(), d.getMonth(), d.getDate() + addDays);
 };
+
+export const normalizeDate = (d: Date) => {
+  return new Date(
+    d.getUTCFullYear(),
+    d.getUTCMonth(),
+    d.getUTCDate(),
+    0,
+  ).toLocaleDateString();
+};

@@ -21,6 +21,7 @@ const copyBill = (bill: Bill): Bill => {
       : undefined,
     amount: bill.getAmount().toString(),
     name: bill.name,
+    type: bill.type,
   });
 };
 

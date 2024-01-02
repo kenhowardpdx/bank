@@ -26,8 +26,18 @@ const getForecast = (
   const bills = rawBills.map((b: BillInput) => new Bill(b));
   let total = startingBalance;
   let cycles: Array<CalculatedCycle> = [];
-  let next = startDate;
-  let end = new Date(startDate);
+  let next = new Date(
+    startDate.getUTCFullYear(),
+    startDate.getUTCMonth(),
+    startDate.getUTCDate(),
+    0,
+  );
+  let end = new Date(
+    startDate.getUTCFullYear(),
+    startDate.getUTCMonth(),
+    startDate.getUTCDate(),
+    0,
+  );
   while (end < endDate) {
     const start = next;
     if (cycleType === "weekly") {
@@ -35,15 +45,15 @@ const getForecast = (
     }
     if (cycleType === "bi-weekly") {
       next = new Date(
-        next.getFullYear(),
-        next.getMonth(),
-        next.getDate() + 14,
+        next.getUTCFullYear(),
+        next.getUTCMonth(),
+        next.getUTCDate() + 14,
         0,
       );
       end = new Date(
-        next.getFullYear(),
-        next.getMonth(),
-        next.getDate() - 1,
+        next.getUTCFullYear(),
+        next.getUTCMonth(),
+        next.getUTCDate() - 1,
         0,
       );
     }

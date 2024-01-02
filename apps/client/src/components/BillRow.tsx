@@ -1,45 +1,53 @@
-import { useState, useEffect } from "react";
-import { formatDate } from "../helpers/date";
+import { useEffect, useState } from "react";
+import { formatDate, normalizeDate } from "../helpers/date";
 import { Button } from "react-bootstrap";
 
+type BillType = "monthly" | "annually";
 export interface Bill {
   name: string;
   startDate: string;
   endDate?: string;
   amount: string;
+  type: BillType;
 }
 
 export default function BillRow({
   index,
+  bill,
   updateBills,
-  name: n,
-  startDate: sd,
-  endDate: ed,
-  amount: a,
-}: Bill & {
+}: {
   index: number;
+  bill: Bill;
   updateBills: (index: number, bill: Bill | null) => void;
 }) {
-  const [name, setName] = useState(n);
-  const [startDate, setStartDate] = useState(sd);
-  const [endDate, setEndDate] = useState(ed);
-  const [amount, setAmount] = useState(a);
+  const [billName, setBillName] = useState(bill.name);
+  const [billStartDate, setBillStartDate] = useState(bill.startDate);
+  const [billEndDate, setBillEndDate] = useState(bill.endDate);
+  const [billAmount, setBillAmount] = useState(bill.amount);
+  const [billType, setBillType] = useState(bill.type);
   const setBills = () => {
-    updateBills(index, { name, startDate, endDate, amount });
+    updateBills(index, {
+      name: billName,
+      startDate: billStartDate,
+      endDate: billEndDate,
+      amount: billAmount,
+      type: billType,
+    });
   };
   useEffect(() => {
     setBills();
-  }, [name, startDate, endDate, amount]);
+  }, [billName, billStartDate, billEndDate, billAmount, billType]);
   const deleteBill = () => {
     updateBills(index, null);
   };
   return (
     <>
       <tr>
-        <td>{name}</td>
-        <td>{startDate}</td>
-        <td>{endDate}</td>
-        <td>{amount}</td>
+        <td>{billName}</td>
+        <td>{billStartDate}</td>
+        <td>{billEndDate}</td>
+        <td>{billAmount}</td>
+        <td>{billType}</td>
       </tr>
       <tr>
         <td colSpan={4}>
@@ -50,9 +58,9 @@ export default function BillRow({
                 <input
                   type="text"
                   className="form-control"
-                  value={name}
+                  value={billName}
                   onChange={(e) => {
-                    setName(e.target.value);
+                    setBillName(e.target.value);
                   }}
                 />
               </div>
@@ -61,9 +69,9 @@ export default function BillRow({
                 <input
                   type="date"
                   className="form-control"
-                  value={formatDate(new Date(startDate))}
+                  value={formatDate(new Date(billStartDate))}
                   onChange={(e) => {
-                    setStartDate(e.target.value);
+                    setBillStartDate(normalizeDate(new Date(e.target.value)));
                   }}
                 />
               </div>
@@ -72,9 +80,9 @@ export default function BillRow({
                 <input
                   type="date"
                   className="form-control"
-                  value={endDate ? formatDate(new Date(endDate)) : ""}
+                  value={billEndDate ? formatDate(new Date(billEndDate)) : ""}
                   onChange={(e) => {
-                    setEndDate(e.target.value);
+                    setBillEndDate(normalizeDate(new Date(e.target.value)));
                   }}
                 />
               </div>
@@ -83,11 +91,24 @@ export default function BillRow({
                 <input
                   type="text"
                   className="form-control"
-                  value={amount}
+                  value={billAmount}
                   onChange={(e) => {
-                    setAmount(e.target.value);
+                    setBillAmount(e.target.value);
                   }}
                 />
+              </div>
+              <div className="col">
+                <label className="form-label">Type</label>
+                <select
+                  className="form-control"
+                  value={billType}
+                  onChange={(e) => {
+                    setBillType(e.target.value as BillType);
+                  }}
+                >
+                  <option value="monthly">Monthly</option>
+                  <option value="annually">Annually</option>
+                </select>
               </div>
             </div>
             <div className="row">

@@ -22,7 +22,9 @@ export default function Bills() {
 
   const getBills = () => {
     return bills.map((bill, i) => {
-      return <BillRow key={i} index={i} updateBills={updateBills} {...bill} />;
+      return (
+        <BillRow key={i} index={i} updateBills={updateBills} bill={bill} />
+      );
     });
   };
 
@@ -39,6 +41,7 @@ export default function Bills() {
         name: "new",
         startDate: new Date().toLocaleDateString(),
         amount: "0",
+        type: "monthly",
       },
     ]);
   };
@@ -55,6 +58,7 @@ export default function Bills() {
             <th>Start Date</th>
             <th>End Date</th>
             <th>Amount</th>
+            <th>Type</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>

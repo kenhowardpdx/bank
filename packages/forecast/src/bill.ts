@@ -5,6 +5,7 @@ interface BillInput {
   endDate?: string;
   amount: string;
   name: string;
+  type: "monthly" | "annually";
 }
 
 const getLastDayOfMonth = (date: Date): Date => {
@@ -26,10 +27,12 @@ class Bill {
   name: string;
   startDate: Date;
   endDate?: Date;
-  constructor({ startDate, endDate, amount, name }: BillInput) {
+  type: "monthly" | "annually";
+  constructor({ startDate, endDate, amount, name, type }: BillInput) {
     this.startDate = normalizeDate(startDate);
     this.endDate = endDate ? normalizeDate(endDate) : undefined;
     this.name = name;
+    this.type = type;
 
     this.#amount = new Amount(amount, true);
   }
@@ -59,6 +62,14 @@ class Bill {
       this.startDate.getDate() <= lastDayOfStartMonth
         ? this.startDate.getDate()
         : lastDayOfStartMonth;
+    if (this.type === "annually") {
+      return new Date(
+        start.getUTCFullYear(),
+        this.startDate.getUTCMonth(),
+        this.startDate.getUTCDate(),
+        0,
+      );
+    }
     if (start.getDate() <= day) {
       return new Date(start.getFullYear(), start.getMonth(), day);
     }

@@ -52,7 +52,8 @@ describe("Bill", () => {
         range: [start, end],
         expected,
       }: TestData) => {
-        const b = new Bill({ name, startDate, amount });
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const b = new Bill({ name, startDate, amount, type: "monthly" });
         expect(b.dueDate(start, end)).toEqual(expected);
       },
     );
@@ -122,7 +123,13 @@ describe("Bill", () => {
         range: [start, end],
         expected,
       }: TestData) => {
-        const b = new Bill({ name, startDate, endDate, amount });
+        const b = new Bill({
+          name,
+          startDate,
+          endDate,
+          amount,
+          type: "monthly",
+        });
         expect(b.inRange(start, end)).toEqual(expected);
       },
     );
