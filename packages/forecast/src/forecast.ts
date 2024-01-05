@@ -3,7 +3,7 @@ import { Bill, BillInput } from "./bill";
 import { Cycle } from "./cycle";
 import { sum } from "./sum";
 
-type CycleType = "weekly" | "bi-weekly" | "monthly" | "10|25";
+export type CycleType = "weekly" | "bi-weekly" | "monthly" | "10|25";
 
 interface CalculatedCycle {
   startDate: Date;
