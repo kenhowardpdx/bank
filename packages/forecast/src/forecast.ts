@@ -58,10 +58,36 @@ const getForecast = (
       );
     }
     if (cycleType === "monthly") {
-      throw new Error("NOT IMPLEMENTED");
+      next = new Date(
+        next.getUTCFullYear(),
+        next.getUTCMonth() + 1,
+        next.getUTCDate(),
+      );
+      end = new Date(
+        next.getUTCFullYear(),
+        next.getUTCMonth() + 1,
+        next.getUTCDate() - 1,
+      );
     }
     if (cycleType === "10|25") {
-      throw new Error("NOT IMPLEMENTED");
+      if (start.getUTCDate() <= 10) {
+        start.setDate(10);
+      } else if (start.getUTCDate() <= 25) {
+        start.setDate(25);
+      }
+      const [endMonth, endDay] = start.getUTCDate() === 10 ? [0, 24] : [1, 9];
+      const [nextMonth, nextDay] =
+        start.getUTCDate() === 10 ? [0, 25] : [1, 10];
+      next = new Date(
+        next.getUTCFullYear(),
+        next.getUTCMonth() + nextMonth,
+        nextDay,
+      );
+      end = new Date(
+        start.getUTCFullYear(),
+        start.getUTCMonth() + endMonth,
+        endDay,
+      );
     }
     // TODO: use overrides to allow user to modify income per date or range.
     const income = incomePerCycle;
