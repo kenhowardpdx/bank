@@ -152,6 +152,7 @@ export default function Forecast() {
             >
               <option value="bi-weekly">Bi-weekly</option>
               <option value="10|25">10th & 25th</option>
+              <option value="monthly">Monthly</option>
             </select>
           </div>
         </div>
