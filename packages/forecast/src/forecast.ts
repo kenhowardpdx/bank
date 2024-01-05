@@ -65,7 +65,7 @@ const getForecast = (
       );
       end = new Date(
         next.getUTCFullYear(),
-        next.getUTCMonth() + 1,
+        next.getUTCMonth(),
         next.getUTCDate() - 1,
       );
     }
