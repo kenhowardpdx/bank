@@ -100,7 +100,7 @@ export default function BillRow({
               <div className="col">
                 <label className="form-label">Type</label>
                 <select
-                  className="form-control"
+                  className="form-select"
                   value={billType}
                   onChange={(e) => {
                     setBillType(e.target.value as BillType);

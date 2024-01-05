@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { getForecast } from "@bank/forecast";
+import type { CycleType } from "@bank/forecast/dist/forecast";
 import { useState } from "react";
 import { formatDate, getFutureDate } from "./helpers/date";
 import type { Bill } from "./components/BillRow";
@@ -13,6 +14,7 @@ export default function Forecast() {
   const [endDate, setEndDate] = useState(
     getFutureDate(new Date(startDate), 14).toLocaleDateString(),
   );
+  const [cycleType, setCycleType] = useState<CycleType>("bi-weekly");
   const bills = JSON.parse(
     localStorage.getItem("bills") || "[]",
   ) as Array<Bill>;
@@ -22,6 +24,8 @@ export default function Forecast() {
     new Date(startDate),
     new Date(endDate),
     bills,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    cycleType,
   );
 
   const Bill = function ({
@@ -136,6 +140,19 @@ export default function Forecast() {
               value={formatDate(new Date(endDate))}
               onChange={(event) => setEndDate(event.target.value)}
             />
+          </div>
+          <div className="col">
+            <label className="form-label">Cycle type</label>
+            <select
+              className="form-select"
+              value={cycleType}
+              onChange={(event) =>
+                setCycleType(event.target.value as CycleType)
+              }
+            >
+              <option value="bi-weekly">Bi-weekly</option>
+              <option value="10|25">10th & 25th</option>
+            </select>
           </div>
         </div>
       </form>
