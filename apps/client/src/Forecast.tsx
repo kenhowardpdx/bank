@@ -1,31 +1,91 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { getForecast } from "@bank/forecast";
-import type { CycleType } from "@bank/forecast/dist/forecast";
-import { useState } from "react";
-import { formatDate, getFutureDate } from "./helpers/date";
+import type { CycleType, CalculatedCycle } from "@bank/forecast/dist/forecast";
+import { useEffect, useState } from "react";
+import { formatDate } from "./helpers/date";
 import type { Bill } from "./components/BillRow";
+import localforage from "./helpers/storage";
 
-export default function Forecast() {
+type Config = {
+  name: string;
+  incomePerCycle: number;
+  startingBalance: number;
+  startDate: string;
+  endDate: string;
+  cycleType: CycleType;
+};
+
+type Forecast = {
+  cycles: CalculatedCycle[];
+  sum: `$$${number}.${number}` | `-$$${number}.${number}`;
+  startingBalance: `$$${number}.${number}` | `-$$${number}.${number}`;
+};
+
+export default function Forecast({ storageKey }: { storageKey: string }) {
   // TODO: allow option to persist incomePerCycle
-  const [incomePerCycle, setIncomePerCycle] = useState("0");
-  const [startingBalance, setStartingBalance] = useState("0");
-  const [startDate, setStartDate] = useState(new Date().toLocaleDateString());
-  const [endDate, setEndDate] = useState(
-    getFutureDate(new Date(startDate), 14).toLocaleDateString(),
-  );
-  const [cycleType, setCycleType] = useState<CycleType>("bi-weekly");
-  const bills = JSON.parse(
-    localStorage.getItem("bills") || "[]",
-  ) as Array<Bill>;
-  const forecast = getForecast(
+  const [incomePerCycle, setIncomePerCycle] = useState("");
+  const [startingBalance, setStartingBalance] = useState("");
+  const [startDate, setStartDate] = useState("2006-01-02");
+  const [endDate, setEndDate] = useState("2006-01-02");
+  const [cycleType, setCycleType] = useState("");
+  const [bills, setBills] = useState<Array<Bill>>([]);
+  let forecast = { cycles: [] as CalculatedCycle[] };
+  useEffect(() => {
+    (async (key: string) => {
+      const config = await localforage.getItem<Config>(`${key}_config`);
+      const bills = await localforage.getItem<Array<Bill>>(`${key}_bills`);
+
+      return { config, bills };
+    })(storageKey)
+      .then(({ config, bills }) => {
+        if (!config || !bills) {
+          return;
+        }
+        const startDate = new Date(config.startDate);
+        const endDate = new Date(config.endDate);
+        if (!cycleType) {
+          // initial load; set state
+          setIncomePerCycle(config.incomePerCycle.toString());
+          setStartingBalance(config.startingBalance.toString());
+          setStartDate(startDate.toUTCString());
+          setEndDate(endDate.toUTCString());
+          setCycleType(config.cycleType as string);
+          setBills(bills);
+        }
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }, []);
+
+  useEffect(() => {
+    const config = {
+      incomePerCycle,
+      startingBalance,
+      startDate,
+      endDate,
+      cycleType,
+    };
+    localforage
+      .setItem(`${storageKey}_config`, config)
+      .then((config) => {
+        // eslint-disable-next-line no-console
+        console.log("successfully saved config", config);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }, [incomePerCycle, startingBalance, startDate, endDate, cycleType]);
+
+  forecast = getForecast(
     parseFloat(incomePerCycle),
     parseFloat(startingBalance),
     new Date(startDate),
     new Date(endDate),
     bills,
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    cycleType,
+    cycleType as CycleType,
   );
 
   const Bill = function ({
@@ -146,9 +206,7 @@ export default function Forecast() {
             <select
               className="form-select"
               value={cycleType}
-              onChange={(event) =>
-                setCycleType(event.target.value as CycleType)
-              }
+              onChange={(event) => setCycleType(event.target.value)}
             >
               <option value="bi-weekly">Bi-weekly</option>
               <option value="10|25">10th & 25th</option>

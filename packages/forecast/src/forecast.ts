@@ -5,7 +5,7 @@ import { sum } from "./sum";
 
 export type CycleType = "weekly" | "bi-weekly" | "monthly" | "10|25";
 
-interface CalculatedCycle {
+export interface CalculatedCycle {
   startDate: Date;
   endDate: Date;
   sum: string;
