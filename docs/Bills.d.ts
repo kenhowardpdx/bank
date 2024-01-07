@@ -1,1 +1,3 @@
-export default function Bills(): import("react/jsx-runtime").JSX.Element;
+export default function Bills({ storageKey }: {
+    storageKey: string;
+}): import("react/jsx-runtime").JSX.Element;

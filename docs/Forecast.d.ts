@@ -1,1 +1,3 @@
-export default function Forecast(): import("react/jsx-runtime").JSX.Element;
+export default function Forecast({ storageKey }: {
+    storageKey: string;
+}): import("react/jsx-runtime").JSX.Element;
