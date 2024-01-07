@@ -895,6 +895,7 @@ const RAW_RUNTIME_STATE =
           ["copy-webpack-plugin", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:11.0.0"],\
           ["css-loader", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:6.8.1"],\
           ["html-webpack-plugin", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:5.6.0"],\
+          ["localforage", "npm:1.10.0"],\
           ["postcss", "npm:8.4.32"],\
           ["postcss-loader", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:7.3.3"],\
           ["react", "npm:18.2.0"],\
@@ -5920,6 +5921,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["immediate", [\
+      ["npm:3.0.6", {\
+        "packageLocation": "./.yarn/cache/immediate-npm-3.0.6-c27588a2d3-f8ba7ede69.zip/node_modules/immediate/",\
+        "packageDependencies": [\
+          ["immediate", "npm:3.0.6"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["immutable", [\
       ["npm:4.3.4", {\
         "packageLocation": "./.yarn/cache/immutable-npm-4.3.4-2f54cf641b-c15b9f0fa7.zip/node_modules/immutable/",\
@@ -7196,6 +7206,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["lie", [\
+      ["npm:3.1.1", {\
+        "packageLocation": "./.yarn/cache/lie-npm-3.1.1-91350720d9-d626857865.zip/node_modules/lie/",\
+        "packageDependencies": [\
+          ["lie", "npm:3.1.1"],\
+          ["immediate", "npm:3.0.6"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["lines-and-columns", [\
       ["npm:1.2.4", {\
         "packageLocation": "./.yarn/cache/lines-and-columns-npm-1.2.4-d6c7cc5799-3da6ee62d4.zip/node_modules/lines-and-columns/",\
@@ -7210,6 +7230,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/loader-runner-npm-4.3.0-9ca67df372-a44d78aae0.zip/node_modules/loader-runner/",\
         "packageDependencies": [\
           ["loader-runner", "npm:4.3.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["localforage", [\
+      ["npm:1.10.0", {\
+        "packageLocation": "./.yarn/cache/localforage-npm-1.10.0-cf9ea9a436-00f19f1f97.zip/node_modules/localforage/",\
+        "packageDependencies": [\
+          ["localforage", "npm:1.10.0"],\
+          ["lie", "npm:3.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
