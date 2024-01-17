@@ -9,6 +9,7 @@
     "@types/bootstrap": "^5",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
+    "@types/scheduler": "^0",
     "autoprefixer": "^10.4.16",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
@@ -33,6 +34,8 @@
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
+    "react-spreadsheet": "^0.9.2",
+    "scheduler": "^0.23.0",
     "typescript": "^5.3.3"
   }
 }
