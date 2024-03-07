@@ -28,9 +28,10 @@ export default function Forecast({ storageKey }: { storageKey: string }) {
   const [startingBalance, setStartingBalance] = useState("");
   const [startDate, setStartDate] = useState("2006-01-02");
   const [endDate, setEndDate] = useState("2006-01-02");
-  const [cycleType, setCycleType] = useState("");
+  const [cycleType, setCycleType] = useState("bi-weekly");
   const [bills, setBills] = useState<Array<Bill>>([]);
   let forecast = { cycles: [] as CalculatedCycle[] };
+  let init = true;
   useEffect(() => {
     (async (key: string) => {
       const config = await localforage.getItem<Config>(`${key}_config`);
@@ -44,8 +45,9 @@ export default function Forecast({ storageKey }: { storageKey: string }) {
         }
         const startDate = new Date(config.startDate);
         const endDate = new Date(config.endDate);
-        if (!cycleType) {
+        if (init) {
           // initial load; set state
+          init = false;
           setIncomePerCycle(config.incomePerCycle.toString());
           setStartingBalance(config.startingBalance.toString());
           setStartDate(startDate.toUTCString());
