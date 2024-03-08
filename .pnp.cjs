@@ -891,6 +891,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:18.2.45"],\
           ["@types/react-dom", "npm:18.2.18"],\
           ["@types/scheduler", "npm:0.16.8"],\
+          ["@types/uuid", "npm:9.0.8"],\
           ["autoprefixer", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:10.4.16"],\
           ["bootstrap", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:5.3.2"],\
           ["copy-webpack-plugin", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:11.0.0"],\
@@ -910,6 +911,7 @@ const RAW_RUNTIME_STATE =
           ["style-loader", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:3.3.3"],\
           ["ts-loader", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:9.5.1"],\
           ["typescript", "patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
+          ["uuid", "npm:9.0.1"],\
           ["webpack", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:5.89.0"],\
           ["webpack-cli", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:5.1.4"],\
           ["webpack-dev-server", "virtual:b39f239c3d83b719103ebcf34ff2a133d390c21d1ecb89683e8cfecf58a97b44cffbae7fc1275801e3cb7b532a1da629dff66b40f057e5870ff95f75670d3777#npm:4.15.1"],\
@@ -2211,6 +2213,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/supertest", "npm:2.0.16"],\
           ["@types/superagent", "npm:4.1.22"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/uuid", [\
+      ["npm:9.0.8", {\
+        "packageLocation": "./.yarn/cache/@types-uuid-npm-9.0.8-3eeeaa5abb-b411b93054.zip/node_modules/@types/uuid/",\
+        "packageDependencies": [\
+          ["@types/uuid", "npm:9.0.8"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -10723,6 +10734,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/uuid-npm-8.3.2-eca0baba53-bcbb807a91.zip/node_modules/uuid/",\
         "packageDependencies": [\
           ["uuid", "npm:8.3.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:9.0.1", {\
+        "packageLocation": "./.yarn/cache/uuid-npm-9.0.1-39a8442bc6-1607dd32ac.zip/node_modules/uuid/",\
+        "packageDependencies": [\
+          ["uuid", "npm:9.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
