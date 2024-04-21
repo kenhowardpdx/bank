@@ -9,7 +9,7 @@ interface BillInput {
 }
 
 const getLastDayOfMonth = (date: Date): Date => {
-  return new Date(date.getFullYear(), date.getMonth(), 0);
+  return new Date(date.getUTCFullYear(), date.getUTCMonth() + 1, 0);
 };
 
 const normalizeDate = (d: string) => {
@@ -55,12 +55,12 @@ class Bill {
   };
   dueDate = (start: Date, end: Date): Date => {
     // account for shorter months by restricting due date to month length
-    const lastDayOfStartMonth = getLastDayOfMonth(start).getDate();
+    const lastDayOfStartMonth = getLastDayOfMonth(start).getUTCDate();
     // account for going into the next year
-    const lastDayOfEndMonth = getLastDayOfMonth(end).getDate();
+    const lastDayOfEndMonth = getLastDayOfMonth(end).getUTCDate();
     let day =
-      this.startDate.getDate() <= lastDayOfStartMonth
-        ? this.startDate.getDate()
+      this.startDate.getUTCDate() <= lastDayOfStartMonth
+        ? this.startDate.getUTCDate()
         : lastDayOfStartMonth;
     if (this.type === "annually") {
       return new Date(
@@ -70,15 +70,15 @@ class Bill {
         0,
       );
     }
-    if (start.getDate() <= day) {
-      return new Date(start.getFullYear(), start.getMonth(), day);
+    if (start.getUTCDate() <= day) {
+      return new Date(start.getUTCFullYear(), start.getUTCMonth(), day);
     }
-    if (start.getDate() > this.startDate.getDate()) {
+    if (start.getUTCDate() > this.startDate.getUTCDate()) {
       day =
-        this.startDate.getDate() <= lastDayOfEndMonth
-          ? this.startDate.getDate()
+        this.startDate.getUTCDate() <= lastDayOfEndMonth
+          ? this.startDate.getUTCDate()
           : lastDayOfEndMonth;
-      return new Date(end.getFullYear(), end.getMonth(), day);
+      return new Date(end.getUTCFullYear(), end.getUTCMonth(), day);
     }
     // default to today
     return new Date();
