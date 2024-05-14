@@ -43,82 +43,65 @@ export default function BillRow({
   return (
     <>
       <tr>
-        <td>{billName}</td>
-        <td>{billStartDate}</td>
-        <td>{billEndDate}</td>
-        <td>{billAmount}</td>
-        <td>{billType}</td>
-      </tr>
-      <tr>
-        <td colSpan={4}>
-          <form className="container p-0">
-            <div className="row gy-4">
-              <div className="col">
-                <label className="form-label">Names</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={billName}
-                  onChange={(e) => {
-                    setBillName(e.target.value);
-                  }}
-                />
-              </div>
-              <div className="col">
-                <label className="form-label">Start date</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  value={formatDate(new Date(billStartDate))}
-                  onChange={(e) => {
-                    setBillStartDate(normalizeDate(new Date(e.target.value)));
-                  }}
-                />
-              </div>
-              <div className="col">
-                <label className="form-label">End date</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  value={billEndDate ? formatDate(new Date(billEndDate)) : ""}
-                  onChange={(e) => {
-                    setBillEndDate(normalizeDate(new Date(e.target.value)));
-                  }}
-                />
-              </div>
-              <div className="col">
-                <label className="form-label">Amount</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={billAmount}
-                  onChange={(e) => {
-                    setBillAmount(e.target.value);
-                  }}
-                />
-              </div>
-              <div className="col">
-                <label className="form-label">Type</label>
-                <select
-                  className="form-select"
-                  value={billType}
-                  onChange={(e) => {
-                    setBillType(e.target.value as BillType);
-                  }}
-                >
-                  <option value="monthly">Monthly</option>
-                  <option value="annually">Annually</option>
-                </select>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col gy-4 text-end">
-                <Button variant="danger" onClick={deleteBill}>
-                  <i className="bi bi-trash-fill"></i>
-                </Button>
-              </div>
-            </div>
-          </form>
+        <td>
+          <input
+            type="text"
+            className="form-control"
+            value={billName}
+            onChange={(e) => {
+              setBillName(e.target.value);
+            }}
+            autoFocus={true}
+          />
+        </td>
+        <td>
+          <input
+            type="date"
+            className="form-control"
+            value={formatDate(new Date(billStartDate))}
+            onChange={(e) => {
+              setBillStartDate(normalizeDate(new Date(e.target.value)));
+            }}
+          />
+        </td>
+        <td>
+          <input
+            type="date"
+            className="form-control"
+            value={billEndDate ? formatDate(new Date(billEndDate)) : ""}
+            onChange={(e) => {
+              setBillEndDate(normalizeDate(new Date(e.target.value)));
+            }}
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            className="form-control"
+            value={billAmount}
+            onChange={(e) => {
+              setBillAmount(e.target.value);
+            }}
+          />
+        </td>
+        <td>
+          <select
+            className="form-control"
+            value={billType}
+            onChange={(e) => {
+              setBillType(e.target.value as BillType);
+            }}
+          >
+            <option value="monthly">Monthly</option>
+            <option value="annually">Annually</option>
+          </select>
+        </td>
+        <td>
+          <div className="col gy-4 text-end">
+            <Button variant="danger" onClick={deleteBill}>
+              <i className="bi bi-trash-fill"></i>
+            </Button>
+          </div>
         </td>
       </tr>
     </>

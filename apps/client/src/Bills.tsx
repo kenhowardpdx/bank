@@ -61,7 +61,7 @@ export default function Bills({ storageKey }: { storageKey: string }) {
     setBills([
       ...bills,
       {
-        name: "new",
+        name: "",
         startDate: new Date().toLocaleDateString(),
         amount: "0",
         type: "monthly",
@@ -74,7 +74,7 @@ export default function Bills({ storageKey }: { storageKey: string }) {
       <Button variant="primary" onClick={addBill}>
         <i className="bi bi-file-earmark-plus-fill"></i>
       </Button>
-      <table>
+      <table className="table table-responsive">
         <thead>
           <tr>
             <th>Name</th>
@@ -82,6 +82,7 @@ export default function Bills({ storageKey }: { storageKey: string }) {
             <th>End Date</th>
             <th>Amount</th>
             <th>Type</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>

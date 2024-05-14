@@ -7,6 +7,10 @@ tr.negative td {
     color: white;
 }
 
+tr.low td {
+    background-color: lightpink;
+}
+
 .clickable {
     cursor: pointer;
 }

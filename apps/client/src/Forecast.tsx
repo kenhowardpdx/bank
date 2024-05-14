@@ -121,7 +121,10 @@ export default function Forecast({ storageKey }: { storageKey: string }) {
     endDate: Date;
     bills: Array<Bill & { dueDate: Date }>;
   }) {
+    const theTotal = total.substring(1).replace(",", "");
+    const isClickable = bills.length > 0;
     const isNegative = total[0] === "-";
+    const isLow = !isNegative && parseFloat(theTotal) <= 100;
     const [isShown, setIsShown] = useState(false);
     const rows = bills.map((bill, i) => {
       return (
@@ -134,12 +137,14 @@ export default function Forecast({ storageKey }: { storageKey: string }) {
         />
       );
     });
+    const rowClassName = [
+      isClickable ? "clickable" : "",
+      isNegative ? "negative" : "",
+      isLow ? "low" : "",
+    ].join(" ");
     return (
       <>
-        <tr
-          className={"clickable" + (isNegative ? "negative" : "")}
-          onClick={() => setIsShown(!isShown)}
-        >
+        <tr className={rowClassName} onClick={() => setIsShown(!isShown)}>
           <td colSpan={2}>
             {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
           </td>
