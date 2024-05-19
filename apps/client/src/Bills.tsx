@@ -7,9 +7,10 @@ import { sort } from "./helpers/sort";
 
 export default function Bills({ storageKey }: { storageKey: string }) {
   const [bills, setBills] = useState<Array<Bill>>([]);
-  const [seed, setSeed] = useState(1);
-  const reset = () => {
-    setSeed(Math.random());
+
+  const sortBills = (bills: Bill[]) => {
+    const sortedBills = sort(bills, "name", "startDate");
+    return sortedBills;
   };
 
   useEffect(() => {
@@ -20,8 +21,7 @@ export default function Bills({ storageKey }: { storageKey: string }) {
         if (!bills) {
           return;
         }
-        const sortedBills = sort(bills, "name", "startDate");
-        setBills(sortedBills as unknown as Bill[]);
+        setBills(sortBills(bills) as unknown as Bill[]);
       })
       .catch((err) => {
         throw err;
@@ -42,10 +42,7 @@ export default function Bills({ storageKey }: { storageKey: string }) {
         // eslint-disable-next-line no-console
         console.log("successfully stored bills", bills);
 
-        setBills(bills);
-        if (bill === null) {
-          reset();
-        }
+        setBills(sortBills(bills) as unknown as Bill[]);
       })
       .catch((err) => {
         throw err;
@@ -84,12 +81,9 @@ export default function Bills({ storageKey }: { storageKey: string }) {
   };
 
   return (
-    <div key={seed}>
+    <div>
       <Button variant="primary" onClick={addBill}>
         <i className="bi bi-file-earmark-plus-fill"></i>
-      </Button>
-      <Button value="secondary" onClick={reset}>
-        <i className="bi bi-arrow-clockwise"></i>
       </Button>
       <table className="table table-responsive">
         <thead>
