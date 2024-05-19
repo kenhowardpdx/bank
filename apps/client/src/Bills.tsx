@@ -3,9 +3,16 @@ import type { Bill } from "./components/BillRow";
 import BillRow from "./components/BillRow";
 import { Button } from "react-bootstrap";
 import localforage from "./helpers/storage";
+import { sort } from "./helpers/sort";
 
 export default function Bills({ storageKey }: { storageKey: string }) {
   const [bills, setBills] = useState<Array<Bill>>([]);
+  const [seed, setSeed] = useState(1);
+  const reset = () => {
+    const sortedBills = sort(bills, "name", "startDate");
+    setBills(sortedBills as unknown as Bill[]);
+    setSeed(Math.random());
+  };
 
   useEffect(() => {
     (async (key: string) => {
@@ -15,7 +22,8 @@ export default function Bills({ storageKey }: { storageKey: string }) {
         if (!bills) {
           return;
         }
-        setBills(bills);
+        const sortedBills = sort(bills, "name", "startDate");
+        setBills(sortedBills as unknown as Bill[]);
       })
       .catch((err) => {
         throw err;
@@ -41,12 +49,20 @@ export default function Bills({ storageKey }: { storageKey: string }) {
         throw err;
       });
     setBills(newBills);
+    if (bill === null) {
+      reset();
+    }
   };
 
   const getBills = () => {
     return bills.map((bill, i) => {
       return (
-        <BillRow key={i} index={i} updateBills={updateBills} bill={bill} />
+        <BillRow
+          key={i}
+          index={i}
+          updateBills={updateBills}
+          bill={bill as unknown as Bill}
+        />
       );
     });
   };
@@ -70,9 +86,12 @@ export default function Bills({ storageKey }: { storageKey: string }) {
   };
 
   return (
-    <div>
+    <div key={seed}>
       <Button variant="primary" onClick={addBill}>
         <i className="bi bi-file-earmark-plus-fill"></i>
+      </Button>
+      <Button value="secondary" onClick={reset}>
+        <i className="bi bi-arrow-clockwise"></i>
       </Button>
       <table className="table table-responsive">
         <thead>
