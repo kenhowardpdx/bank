@@ -9,8 +9,6 @@ export default function Bills({ storageKey }: { storageKey: string }) {
   const [bills, setBills] = useState<Array<Bill>>([]);
   const [seed, setSeed] = useState(1);
   const reset = () => {
-    const sortedBills = sort(bills, "name", "startDate");
-    setBills(sortedBills as unknown as Bill[]);
     setSeed(Math.random());
   };
 
@@ -38,20 +36,20 @@ export default function Bills({ storageKey }: { storageKey: string }) {
       newBills.splice(index, 1);
     }
 
-    // localStorage.setItem("bills", JSON.stringify(newBills));
     localforage
       .setItem(`${storageKey}_bills`, newBills)
       .then((bills) => {
         // eslint-disable-next-line no-console
         console.log("successfully stored bills", bills);
+
+        setBills(bills);
+        if (bill === null) {
+          reset();
+        }
       })
       .catch((err) => {
         throw err;
       });
-    setBills(newBills);
-    if (bill === null) {
-      reset();
-    }
   };
 
   const getBills = () => {
