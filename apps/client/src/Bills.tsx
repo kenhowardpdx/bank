@@ -42,7 +42,7 @@ export default function Bills({ storageKey }: { storageKey: string }) {
         // eslint-disable-next-line no-console
         console.log("successfully stored bills", bills);
 
-        setBills(sortBills(bills) as unknown as Bill[]);
+        setBills(bills);
       })
       .catch((err) => {
         throw err;
