@@ -12,3 +12,23 @@ services:
       - ${PWD}/bank_db/:/var/lib/postgresql/data/
       # initialize the database when it doesn't already exist
       - ${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql
+  server:
+    profiles:
+      - server
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+      args:
+        - BUILD_CONTEXT=server
+    volumes:
+      - "${PWD}/apps/server:/app/apps/server"
+    ports: 
+      - 5000:5000
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=example
+      - PGHOST=postgres
+      - PGPORT=5432
+      - PGDATABASE=postgres
+
+
