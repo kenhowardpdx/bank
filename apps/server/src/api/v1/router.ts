@@ -1,4 +1,5 @@
 import { Router } from "express";
+import HttpStatusCode from "../../status";
 import { getForecast } from "@bank/forecast";
 
 type JSONObject = {
@@ -9,6 +10,18 @@ const router = Router();
 
 router.get("/", (req, res) => {
   res.status(501).send();
+});
+
+router.post("/login", (req, res) => {
+  const body = req.body as unknown;
+  if (typeof body !== "object") {
+    res.statusCode = HttpStatusCode.UNAUTHORIZED;
+    res.send({
+      statusCode: HttpStatusCode.UNAUTHORIZED,
+      message: HttpStatusCode[HttpStatusCode.UNAUTHORIZED],
+    });
+    return;
+  }
 });
 
 router.post("/forecast", (req, res) => {
