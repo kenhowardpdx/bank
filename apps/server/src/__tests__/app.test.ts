@@ -1,6 +1,6 @@
-import { app } from "../app";
+import { app } from "@app/app.js";
 import request from "supertest";
-import { getBillsByUserId } from "../models/bill";
+import { getBillsByUserId } from "@app/models/bill.js";
 
 jest.mock("../models/bill");
 

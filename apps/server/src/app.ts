@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { router as api } from "./api/v1/router";
+import { router as api } from "@app/api/v1/router.js";
 
 const app = express();
 const router = express.Router();

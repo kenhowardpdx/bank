@@ -1,3 +1,3 @@
-import HttpStatusCode from "./status";
+import HttpStatusCode from "@app/status/status.js";
 
 export default HttpStatusCode;

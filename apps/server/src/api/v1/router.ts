@@ -1,7 +1,7 @@
 import { Router } from "express";
-import HttpStatusCode from "../../status";
+import HttpStatusCode from "@app/status/index.js";
 import { getForecast } from "@bank/forecast";
-import { getBillsByUserId } from "../../models/bill";
+import { getBillsByUserId } from "@app/models/bill.js";
 
 type JSONObject = {
   [key: string]: string | number | JSONObject | Array<JSONObject> | null;
