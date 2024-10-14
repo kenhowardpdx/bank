@@ -1,6 +1,7 @@
 import { Router } from "express";
 import HttpStatusCode from "../../status";
 import { getForecast } from "@bank/forecast";
+import { getBillsByUserId } from "../../models/bill";
 
 type JSONObject = {
   [key: string]: string | number | JSONObject | Array<JSONObject> | null;
@@ -22,6 +23,12 @@ router.post("/login", (req, res) => {
     });
     return;
   }
+});
+
+router.get("/bills", async (req, res) => {
+  const userId = 1; // To be retrieved from the request
+  const bills = await getBillsByUserId(userId);
+  res.send({ data: bills });
 });
 
 router.post("/forecast", (req, res) => {

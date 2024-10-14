@@ -13,4 +13,4 @@ COPY packages packages
 RUN corepack enable
 RUN yarn install
 
-CMD ["sh", "-c", "yarn workspace @bank/${BUILD_CONTEXT} run start"]
+CMD ["sh", "-c", "yarn workspace @bank/${BUILD_CONTEXT} run dev"]

@@ -18,6 +18,7 @@ services:
       dockerfile: apps/server/Dockerfile
       args:
         - BUILD_CONTEXT=server
+    restart: always
     volumes:
       - "${PWD}/apps/server:/app/apps/server"
     ports: 
