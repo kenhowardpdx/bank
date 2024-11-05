@@ -1,4 +1,4 @@
-import db from "@app/database/index.js";
+import db from "@serverdatabase/index.js";
 
 type BillModel = {
   id: number;

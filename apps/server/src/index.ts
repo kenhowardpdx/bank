@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import db from "@app/database/index.js";
-import { app } from "@app/app.js";
+import db from "@serverdatabase/index.js";
+import { app } from "@serverapp.js";
 import { exit } from "process";
 
 const port = "5000";
@@ -21,7 +21,12 @@ const sqlStartUp = async () => {
   }
 };
 
-app.listen(port, async () => {
-  await sqlStartUp();
-  console.log(`⚡️[server]: server is running at http://localhost:${port}`);
-});
+sqlStartUp()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`⚡️[server]: server is running at http://localhost:${port}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Failed to start server:", error);
+  });

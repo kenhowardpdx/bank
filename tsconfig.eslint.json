@@ -1,6 +1,10 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": [
-    "packages/**/dist/**"
-  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@server*": ["apps/server/src/*"]
+    }
+  },
+  "exclude": ["packages/**/dist/**"]
 }

@@ -12,7 +12,9 @@ const config: JestConfigWithTsJest = {
     ],
   },
   roots: ["<rootDir>"],
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   modulePaths: [compilerOptions.baseUrl],
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>/",
     useESM: true,
