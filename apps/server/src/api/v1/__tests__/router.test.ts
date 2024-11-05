@@ -1,4 +1,4 @@
-import { router } from "@serverapi/v1/router.js";
+import { router } from "@server/api/v1/router.js";
 import type { Express } from "express";
 import express from "express";
 import request from "supertest";

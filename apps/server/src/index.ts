@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import db from "@serverdatabase/index.js";
-import { app } from "@serverapp.js";
+import db from "@server/database/index.js";
+import { app } from "@server/app.js";
 import { exit } from "process";
 
 const port = "5000";
