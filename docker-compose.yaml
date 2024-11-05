@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - 5432:5432
+    volumes:
+      # persist data between app starts
+      - ${PWD}/bank_db/:/var/lib/postgresql/data/
+      # initialize the database when it doesn't already exist
+      - ${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql
+  server:
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+      args:
+        - BUILD_CONTEXT=server
+    restart: always
+    volumes:
+      - "${PWD}/apps/server:/app/apps/server"
+    ports: 
+      - 5000:5000
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=example
+      - PGHOST=postgres
+      - PGPORT=5432
+      - PGDATABASE=postgres
+
+

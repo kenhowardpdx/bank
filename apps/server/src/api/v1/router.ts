@@ -1,5 +1,7 @@
 import { Router } from "express";
+import HttpStatusCode from "@serverstatus/index.js";
 import { getForecast } from "@bank/forecast";
+import { getBillsByUserId } from "@servermodels/bill.js";
 
 type JSONObject = {
   [key: string]: string | number | JSONObject | Array<JSONObject> | null;
@@ -9,6 +11,25 @@ const router = Router();
 
 router.get("/", (req, res) => {
   res.status(501).send();
+});
+
+router.post("/login", (req, res) => {
+  const body = req.body as unknown;
+  if (typeof body !== "object") {
+    res.statusCode = HttpStatusCode.UNAUTHORIZED;
+    res.send({
+      statusCode: HttpStatusCode.UNAUTHORIZED,
+      message: HttpStatusCode[HttpStatusCode.UNAUTHORIZED],
+    });
+    return;
+  }
+});
+
+router.get("/bills", (req, res) => {
+  const userId = 1; // To be retrieved from the request
+  getBillsByUserId(userId)
+    .then((bills) => res.send({ data: bills }))
+    .catch((error: Error) => res.status(500).send({ error: error.message }));
 });
 
 router.post("/forecast", (req, res) => {

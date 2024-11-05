@@ -1,0 +1,10 @@
+{
+  // This file is used to help the IDE to understand the typescript code
+  // It is not used to build the project
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "exclude": [],
+  "include": ["**/*.ts"]
+}
