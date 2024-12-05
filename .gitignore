@@ -18,3 +18,5 @@ node_modules
 
 bank_db
 snapshot.json
+
+apps/clientv0
