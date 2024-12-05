@@ -11,9 +11,12 @@
 
 !.yarn/cache
 #.pnp.*
+node_modules
 
 .vscode
 .vim
 
 bank_db
 snapshot.json
+
+apps/clientv0

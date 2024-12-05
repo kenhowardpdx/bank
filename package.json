@@ -2,7 +2,7 @@
   "name": "@bank/bank",
   "packageManager": "yarn@4.1.1",
   "scripts": {
-    "build": "yarn workspaces foreach --since run build",
+    "build": "yarn workspaces foreach --exclude 'apps/clientv0' --since run build",
     "test": "yarn workspaces foreach --since run test",
     "test:all": "yarn workspaces foreach --recursive --from 'packages/*' --from 'apps/*' run test",
     "lint": "eslint . --fix"
@@ -25,6 +25,6 @@
     "jest-config": "^29.7.0",
     "prettier": "^3.1.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.7.2"
   }
 }
