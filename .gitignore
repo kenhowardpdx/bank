@@ -11,6 +11,7 @@
 
 !.yarn/cache
 #.pnp.*
+node_modules
 
 .vscode
 .vim
