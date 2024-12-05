@@ -1,5 +1,5 @@
 {
-  "name": "@bank/client",
+  "name": "@bank/clientv0",
   "packageManager": "yarn@4.0.2",
   "scripts": {
     "build": "webpack --config webpack.config.js",

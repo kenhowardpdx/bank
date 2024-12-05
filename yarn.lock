@@ -496,9 +496,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@bank/client@workspace:apps/client":
+"@bank/clientv0@workspace:apps/clientv0":
   version: 0.0.0-use.local
-  resolution: "@bank/client@workspace:apps/client"
+  resolution: "@bank/clientv0@workspace:apps/clientv0"
   dependencies:
     "@bank/forecast": "workspace:packages/forecast"
     "@popperjs/core": "npm:^2.11.8"
